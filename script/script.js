@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('todoForm');
             const input = document.getElementById('todoInput');
             const todoList = document.getElementById('todoList');
+            const iconClear = document.getElementById('iconClear');
 
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
@@ -9,33 +10,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (newTodo) {
                     const li = document.createElement('li');
                     li.textContent = newTodo;
+                    // Adding a click event to change the background color
                     li.addEventListener('click', function() {
-                        li.style.textDecoration = li.style.textDecoration === 'line-through' ? '' : 'line-through';
+                        li.style.background = li.style.background === 'green' ? '' : 'green';
+                    });
+                    // Adding a double-click event to remake the todo item
+                    li.addEventListener('auxclick', function() {
+                        const remakeInput = prompt('Edit your todo item:', li.textContent);
+                        if (remakeInput !== null) {
+                            li.textContent = remakeInput;
+                            li.style.textDecoration = '';
+                            li.style.background = '';
+                        }
                     });
                     todoList.appendChild(li);
                     input.value = '';
                 }
             });
 });
-
-// This script adds a new todo item to the list when the form is submitted.
-// It prevents the default form submission behavior, checks if the input is not empty,
-// creates a new list item, and appends it to the todo list. Finally, it clears the input field.
-// The script runs when the DOM content is fully loaded to ensure all elements are available.
-
-
-// this one adds a click event that removes the todo item from the list when clicked.
-// It toggles the text decoration between line-through and none to mark the item as completed or not.
+//This ask to the user which item to remove when hold the click, it removes it from the list
 document.addEventListener('DOMContentLoaded', function() {
             const todoList = document.getElementById('todoList');
 
             todoList.addEventListener('dblclick', function(event) {
                 if (event.target.tagName === 'LI') {
-                    event.target.remove();
+                    const itemToRemove = event.target;
+                    if (confirm(`Are you sure you want to remove "${itemToRemove.textContent}"?`)) {
+                        todoList.removeChild(itemToRemove);
+                    }
                 }
             });
 });
-
 // This script adds a double-click event listener to the todo list.
 // When an item is double-clicked, it removes that item from the list.
 
@@ -47,6 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             if (confirm('Are you sure you want to clear all tasks?')) {
             todoList.innerHTML = '';
-    }
-  });
+            }
+            });
 });
