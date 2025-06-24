@@ -42,6 +42,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         li.style.textDecoration = 'line-through';
                         li.style.background = 'green';
                     });
+//Add a Undo button to each todo item making it normal again when clicked
+                    const undo = document.createElement('button');
+                    undo.classList.add('liButton')
+                    undo.textContent = 'Undo';
+                    li.appendChild(undo);
+                    undo.addEventListener('click', function() {
+                        li.style.textDecoration = 'none';
+                        li.style.background = '';
+                    });
                 }
             });
 });

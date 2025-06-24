@@ -119,12 +119,13 @@ body {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 25px;
     font-size: 14px;
 }
 
 .liButton:hover {
     background-color: #1f2a3c;
+    transform: scale(1.05);
 }
 
 #todoList {
