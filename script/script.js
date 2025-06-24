@@ -10,40 +10,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (newTodo) {
                     const li = document.createElement('li');
                     li.textContent = newTodo;
-                    // Adding a click event to change the background color
-                    li.addEventListener('click', function() {
-                        li.style.background = li.style.background === 'green' ? '' : 'green';
-                    });
-                    // Adding a double-click event to remake the todo item
-                    li.addEventListener('auxclick', function() {
-                        const remakeInput = prompt('Edit your todo item:', li.textContent);
-                        if (remakeInput !== null) {
-                            li.textContent = remakeInput;
-                            li.style.textDecoration = '';
-                            li.style.background = '';
+                    todoList.appendChild(li);
+                    input.value = ''; // Clear the input field
+//Add a clear button to each todo item
+                    const clear = document.createElement('button');
+                    clear.classList.add('liButton')
+                    clear.textContent = 'Clear';
+                    li.appendChild(clear);
+                    clear.addEventListener('click', function() {
+                        if (confirm('Are you sure you want to delete this task?')) {
+                            li.remove();
                         }
                     });
-                    todoList.appendChild(li);
-                    input.value = '';
+//Add a Edit button to each todo item
+                    const edit = document.createElement('button');
+                    edit.classList.add('liButton')
+                    edit.textContent = 'Edit';
+                    li.appendChild(edit);
+                    edit.addEventListener('click', function() {
+                        const newText = prompt('Edit your todo item:', li.firstChild.textContent);
+                        if (newText !== null && newText.trim() !== '') {
+                            li.firstChild.textContent = newText.trim();
+                        }
+                    });
+//Add a Done button to each todo item making it green when clicked
+                    const done = document.createElement('button');
+                    done.classList.add('liButton')
+                    done.textContent = 'Done';
+                    li.appendChild(done);
+                    done.addEventListener('click', function() {
+                        li.style.textDecoration = 'line-through';
+                        li.style.background = 'green';
+                    });
                 }
             });
 });
-//This ask to the user which item to remove when hold the click, it removes it from the list
-document.addEventListener('DOMContentLoaded', function() {
-            const todoList = document.getElementById('todoList');
-
-            todoList.addEventListener('dblclick', function(event) {
-                if (event.target.tagName === 'LI') {
-                    const itemToRemove = event.target;
-                    if (confirm(`Are you sure you want to remove "${itemToRemove.textContent}"?`)) {
-                        todoList.removeChild(itemToRemove);
-                    }
-                }
-            });
-});
-// This script adds a double-click event listener to the todo list.
-// When an item is double-clicked, it removes that item from the list.
-
+// Clear all tasks button functionality
 document.addEventListener('DOMContentLoaded', function () {
             const clearTasksButton = document.getElementById('clearTasksButton');
             const todoList = document.getElementById('todoList');

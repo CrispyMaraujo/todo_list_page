@@ -95,7 +95,7 @@ body {
     border-radius: 8px;
     padding: 20px;
     width: 100%;
-    max-width: 300px;
+    max-width: 570px;
     box-sizing: border-box;
     transition: background-color 0.3s, transform 0.2s;
 }
@@ -104,11 +104,27 @@ body {
     padding: 10px;
     border-bottom: 1px solid #ccc;
     transition: background-color 0.3s;
-    list-style: decimal;
+    list-style: square;
     width: 100%;
     box-sizing: border-box;
     word-break: break-word;
     overflow-wrap: break-word;
+}
+
+.liButton {
+    border-radius: 25px;
+    background-color: #2b3a53;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.liButton:hover {
+    background-color: #1f2a3c;
 }
 
 #todoList {
