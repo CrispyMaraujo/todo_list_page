@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         const newText = prompt('Edit your todo item:', li.firstChild.textContent);
                         if (newText !== null && newText.trim() !== '') {
                             li.firstChild.textContent = newText.trim();
+                        li.style.textDecoration = 'none';
+                        li.style.background = '';
                         }
                     });
 //Add a Done button to each todo item making it green when clicked

@@ -140,6 +140,44 @@ body {
 }
 
 /* Adds responsiveness */
+@media (max-width: 1200px) {
+    .todoSection {
+        padding: 15px;
+    }
+
+    #todoForm {
+        flex-direction: column;
+    }
+
+    #todoInput, .addTaskButton {
+        width: 100%;
+    }
+
+    .todoListContainer ul {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .todoSection {
+        padding: 15px;
+    }
+
+    #todoForm {
+        flex-direction: column;
+    }
+
+    #todoInput, .addTaskButton {
+        width: 100%;
+    }
+
+    .todoListContainer ul {
+        width: 90%;
+        max-width: none;
+    }
+}
+
 @media (max-width: 600px) {
     .todoSection {
         padding: 15px;
@@ -151,6 +189,11 @@ body {
 
     #todoInput, .addTaskButton {
         width: 90%;
+    }
+
+    .todoListContainer {
+        flex-direction: column;
+        align-items: center;
     }
 
     .todoListContainer ul {
